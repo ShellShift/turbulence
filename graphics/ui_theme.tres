@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b700dh1v6ohvy"]
+
+[ext_resource type="FontFile" uid="uid://db71cti55fex3" path="res://graphics/Handjet.ttf" id="1_erhb6"]
+
+[resource]
+default_font = ExtResource("1_erhb6")
+default_font_size = 64

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://brab28jq5bbvl"]
+
+[ext_resource type="Texture2D" uid="uid://ha3oa126p0uu" path="res://graphics/sprites/circle.png" id="1_1gwqr"]
+
+[sub_resource type="Curve" id="Curve_kt3nk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CPUParticles" type="CPUParticles2D"]
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource("1_1gwqr")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 125.0
+initial_velocity_max = 250.0
+damping_min = 500.0
+damping_max = 500.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_kt3nk")
+color = Color(0.4675, 0.479875, 0.55, 1)
