@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq6bvm8gcv3ro"]
+
+[ext_resource type="Script" path="res://scripts/rock.gd" id="1_653mf"]
+[ext_resource type="Texture2D" uid="uid://cnn5rpr6ehtwk" path="res://graphics/sprites/square.png" id="1_a1a3i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4enp"]
+size = Vector2(16, 16)
+
+[node name="Rock" type="Area2D"]
+script = ExtResource("1_653mf")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_a1a3i")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s4enp")
+
+[node name="OnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-8, -500, 16, 1000)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="OnScreen" to="." method="_on_screen_exited"]

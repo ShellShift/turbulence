@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://xrkcj0ayqrqn"]
+
+[ext_resource type="PackedScene" uid="uid://bxxdclsou0bic" path="res://prefabs/plane.tscn" id="1_3i0em"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_7jmaq"]
+[ext_resource type="Script" path="res://scripts/spawner.gd" id="3_l7hnn"]
+[ext_resource type="PackedScene" uid="uid://d2rikdh5x743t" path="res://prefabs/balloon.tscn" id="4_26pqh"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(100, 0)
+zoom = Vector2(2, 2)
+script = ExtResource("1_7jmaq")
+target = NodePath("../Plane")
+off = 100.0
+
+[node name="Plane" parent="." instance=ExtResource("1_3i0em")]
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("3_l7hnn")
+prefabs = Array[PackedScene]([ExtResource("4_26pqh")])
+offset = Vector2(404, 0)
+time = 2.0
+time_decrease = 0.05
+min_time = 0.25
+min = Vector2(-48, -48)
+max = Vector2(48, 48)

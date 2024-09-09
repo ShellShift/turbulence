@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2rikdh5x743t"]
+
+[ext_resource type="Script" path="res://scripts/rock.gd" id="1_u5chy"]
+[ext_resource type="Texture2D" uid="uid://c0gnx2sxv5xqb" path="res://graphics/sprites/balloon.png" id="2_rrtoh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4enp"]
+size = Vector2(7, 16)
+
+[node name="Ballon" type="Area2D"]
+script = ExtResource("1_u5chy")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rrtoh")
+hframes = 2
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_s4enp")
+
+[node name="OnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-8, -500, 16, 1000)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="OnScreen" to="." method="_on_screen_exited"]
