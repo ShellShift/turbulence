@@ -26,6 +26,7 @@ func save():
 	var file = FileAccess.open("user://settings", FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
 	file.close()
+	Audio.play("click")
 
 func _on_music_value_changed(value):
 	data.music = value

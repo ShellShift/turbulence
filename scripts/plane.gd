@@ -29,6 +29,7 @@ func _physics_process(delta):
 	velocity.x = speed
 	if Input.is_action_pressed("fly") and !dead:
 		if fuel > 0:
+			Audio.play("fly")
 			velocity.y -= fly_velocity
 			fuel -= delta * fuel_decrease_speed
 	else: fuel = clamp(fuel + delta * fuel_speed, 0, max_fuel)

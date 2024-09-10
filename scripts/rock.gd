@@ -10,6 +10,7 @@ func _on_body_entered(body):
 	queue_free()
 	Camera.shake()
 	Particles.spawn(particle, self, false)
+	Audio.play("explosion")
 	$"../CanvasLayer/LoseMenu".activate()
 
 func _on_screen_exited():

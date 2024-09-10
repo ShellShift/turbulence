@@ -8,6 +8,7 @@ func toggle_pause():
 		animation.play("slide")
 	else:
 		animation.play("slide_out")
+	Audio.play("click")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):

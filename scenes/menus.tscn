@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl2yg5twa4fqb"]
+[gd_scene load_steps=6 format=3 uid="uid://bl2yg5twa4fqb"]
 
 [ext_resource type="Theme" uid="uid://dukbhiljsmqyd" path="res://graphics/ui_theme.tres" id="1_mrgx2"]
 [ext_resource type="Script" path="res://scripts/menus.gd" id="2_rjel8"]
 [ext_resource type="Texture2D" uid="uid://dvoawercc7c63" path="res://graphics/sprites/icon.png" id="2_wx2qk"]
 [ext_resource type="Script" path="res://scripts/settings.gd" id="4_xobbm"]
+[ext_resource type="Environment" uid="uid://d4d7lcn4yxx8j" path="res://graphics/environment.tres" id="5_fw21s"]
 
 [node name="Menus" type="Control" node_paths=PackedStringArray("active")]
 layout_mode = 3
@@ -212,6 +213,9 @@ offset_bottom = 254.0
 grow_vertical = 2
 theme_override_constants/outline_size = 10
 text = "Camera Shake"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_fw21s")
 
 [connection signal="mouse_entered" from="Main/Icon" to="." method="icon_hover"]
 [connection signal="mouse_exited" from="Main/Icon" to="." method="icon_unhover"]

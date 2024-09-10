@@ -3,10 +3,15 @@ extends Control
 @export var time: float
 @export var active: Control
 
+func _ready():
+	Audio.play_music("menu")
+
 func play():
+	Audio.play("click")
 	Scenes.load_scene("game")
 
 func quit():
+	Audio.play("click")
 	get_tree().quit()
 
 func enable(path):
@@ -18,6 +23,7 @@ func enable(path):
 	tween.tween_property(control, "modulate", Color.WHITE, time)
 	var prev_active = active
 	active = control
+	Audio.play("click")
 	await tween.finished
 	prev_active.hide()
 

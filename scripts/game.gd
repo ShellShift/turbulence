@@ -14,6 +14,7 @@ func _ready():
 		hiscore = int(file.get_as_text())
 		file.close()
 	hiscore_label.text = "hiscore: %d" % hiscore
+	Audio.play_music("game")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("fly") && !game_started:
