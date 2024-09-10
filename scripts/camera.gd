@@ -21,5 +21,6 @@ func _process(delta):
 	else: offset = Vector2.ZERO
 
 static func shake(time = 0.1, strength = 1):
+	if !Settings.data.camera_shake: return
 	instance.shake_time = time
 	instance.shake_strength = strength

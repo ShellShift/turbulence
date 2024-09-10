@@ -10,16 +10,21 @@ config_version=5
 
 [application]
 
-config/name="brackeys-2024.2"
+config/name="Turbulence"
 config/tags=PackedStringArray("game_jam")
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/menus.tscn"
 config/features=PackedStringArray("4.3")
-config/icon="res://icon.svg"
+config/icon="res://graphics/sprites/icon.png"
 
 [autoload]
 
 Particles="*res://scripts/particles.gd"
 Scenes="*res://prefabs/scenes.tscn"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [input]
 

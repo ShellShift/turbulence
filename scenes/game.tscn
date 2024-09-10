@@ -119,40 +119,6 @@ theme = ExtResource("4_h4is3")
 theme_override_constants/outline_size = 10
 text = "100.0 km/h"
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -11.5
-offset_top = -154.0
-offset_right = 291.5
-offset_bottom = -81.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("4_h4is3")
-theme_override_constants/outline_size = 10
-text = "Score: 500000"
-horizontal_alignment = 2
-
-[node name="HiscoreLabel" type="Label" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -151.5
-offset_top = -55.0
-offset_right = 151.5
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("4_h4is3")
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 48
-text = "hiscore: 500000"
-horizontal_alignment = 1
-
 [node name="FuelSlider" type="HSlider" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -304,6 +270,40 @@ text = "Quit"
 libraries = {
 "": SubResource("AnimationLibrary_aqp2d")
 }
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.5
+offset_top = -154.0
+offset_right = 291.5
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_h4is3")
+theme_override_constants/outline_size = 10
+text = "Score: 500000"
+horizontal_alignment = 2
+
+[node name="HiscoreLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.5
+offset_top = -55.0
+offset_right = 151.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_h4is3")
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "hiscore: 500000"
+horizontal_alignment = 1
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(100, 0)

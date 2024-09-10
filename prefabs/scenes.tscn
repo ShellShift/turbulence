@@ -72,3 +72,4 @@ grow_vertical = 2
 libraries = {
 "": SubResource("AnimationLibrary_0qe41")
 }
+autoplay = "slide_out"

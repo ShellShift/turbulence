@@ -13,7 +13,7 @@ func _ready():
 		file.close()
 	hiscore_label.text = "hiscore: %d" % hiscore
 
-func _process(delta):
+func _process(_delta):
 	if plane.dead: return
 	score = plane.position.x * .01
 	score_label.text = "Score: %d" % score
@@ -21,7 +21,6 @@ func _process(delta):
 		hiscore = score
 
 func lose():
-	hiscore_label.text = "hiscore: %d" % hiscore
 	var file = FileAccess.open("user://hiscore", FileAccess.WRITE)
 	file.store_string(str(hiscore))
 	file.close()
