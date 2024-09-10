@@ -1,4 +1,4 @@
-extends Panel
+class_name LoseMenu extends Panel
 
 func restart():
 	Scenes.reload()

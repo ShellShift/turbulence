@@ -6,6 +6,7 @@ func reload():
 	animation.play("slide_in")
 	await animation.animation_finished
 	get_tree().reload_current_scene()
+	get_tree().paused = false
 	animation.play("slide_out")
 
 func load_scene(path):
@@ -13,4 +14,5 @@ func load_scene(path):
 	await animation.animation_finished
 	var packed = load("res://scenes/%s.tscn" % path)
 	get_tree().change_scene_to_packed(packed)
+	get_tree().paused = false
 	animation.play("slide_out")

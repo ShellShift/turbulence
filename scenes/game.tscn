@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://xrkcj0ayqrqn"]
+[gd_scene load_steps=18 format=3 uid="uid://xrkcj0ayqrqn"]
 
 [ext_resource type="PackedScene" uid="uid://bxxdclsou0bic" path="res://prefabs/plane.tscn" id="1_3i0em"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_7jmaq"]
 [ext_resource type="FontFile" uid="uid://db71cti55fex3" path="res://graphics/Handjet.ttf" id="1_7rr75"]
 [ext_resource type="Script" path="res://scripts/lose_menu.gd" id="2_fpu3c"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="3_l7hnn"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_v2x1u"]
 [ext_resource type="PackedScene" uid="uid://d2rikdh5x743t" path="res://prefabs/balloon.tscn" id="4_26pqh"]
 [ext_resource type="PackedScene" uid="uid://cq6bvm8gcv3ro" path="res://prefabs/rock.tscn" id="5_lscy8"]
 
@@ -55,33 +56,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_im18e")
 Button/styles/normal = SubResource("StyleBoxFlat_3k7mb")
 Button/styles/pressed = SubResource("StyleBoxFlat_5qojt")
 
-[sub_resource type="Animation" id="Animation_45bcj"]
-resource_name = "slide"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector2(0, -648), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_65uy4"]
 length = 0.001
 tracks/0/type = "value"
@@ -109,10 +83,65 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_45bcj"]
+resource_name = "slide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5uuf8"]
+resource_name = "slide_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aqp2d"]
 _data = {
 "RESET": SubResource("Animation_65uy4"),
-"slide": SubResource("Animation_45bcj")
+"slide": SubResource("Animation_45bcj"),
+"slide_out": SubResource("Animation_5uuf8")
 }
 
 [node name="Game" type="Node2D"]
@@ -180,6 +209,80 @@ libraries = {
 "": SubResource("AnimationLibrary_aqp2d")
 }
 
+[node name="PauseMenu" type="Panel" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_81lks")
+script = ExtResource("3_v2x1u")
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.5
+offset_top = 41.0
+offset_right = 114.5
+offset_bottom = 149.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
+text = "Paused"
+
+[node name="Resume" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -115.0
+offset_right = 47.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+
+[node name="Restart" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = 27.5
+offset_right = 84.0
+offset_bottom = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = 170.0
+offset_right = 47.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PauseMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_aqp2d")
+}
+
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(100, 0)
 zoom = Vector2(2, 2)
@@ -204,8 +307,9 @@ offset = Vector2(404, 0)
 time = 2.0
 time_decrease = 0.05
 min_time = 0.25
-min = Vector2(-48, -48)
-max = Vector2(48, 48)
 
 [connection signal="pressed" from="CanvasLayer/LoseMenu/Restart" to="CanvasLayer/LoseMenu" method="restart"]
 [connection signal="pressed" from="CanvasLayer/LoseMenu/Quit" to="CanvasLayer/LoseMenu" method="quit"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Resume" to="CanvasLayer/PauseMenu" method="toggle_pause"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Restart" to="CanvasLayer/PauseMenu" method="restart"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Quit" to="CanvasLayer/PauseMenu" method="quit"]
