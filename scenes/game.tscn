@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xrkcj0ayqrqn"]
+[gd_scene load_steps=17 format=3 uid="uid://xrkcj0ayqrqn"]
 
 [ext_resource type="PackedScene" uid="uid://bxxdclsou0bic" path="res://prefabs/plane.tscn" id="1_3i0em"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_7jmaq"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://d2rikdh5x743t" path="res://prefabs/balloon.tscn" id="4_26pqh"]
 [ext_resource type="Theme" uid="uid://dukbhiljsmqyd" path="res://graphics/ui_theme.tres" id="4_h4is3"]
 [ext_resource type="PackedScene" uid="uid://cq6bvm8gcv3ro" path="res://prefabs/rock.tscn" id="5_lscy8"]
+[ext_resource type="Script" path="res://scripts/cloud_spawner.gd" id="10_aqkwm"]
+[ext_resource type="PackedScene" uid="uid://c2emoc32h2l4m" path="res://prefabs/cloud.tscn" id="11_8hwsk"]
 
 [sub_resource type="Animation" id="Animation_65uy4"]
 length = 0.001
@@ -98,10 +100,33 @@ _data = {
 "slide_out": SubResource("Animation_5uuf8")
 }
 
+[sub_resource type="Environment" id="Environment_pr0gx"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 1.0
+glow_blend_mode = 4
+
 [node name="Game" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_uryna")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.5
+offset_top = -36.5
+offset_right = 204.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_h4is3")
+theme_override_constants/outline_size = 10
+text = "Click and Hold to Fly"
 
 [node name="SpeedLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 7
@@ -117,7 +142,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("4_h4is3")
 theme_override_constants/outline_size = 10
-text = "100.0 km/h"
+text = "0.0 km/h"
 
 [node name="FuelSlider" type="HSlider" parent="CanvasLayer"]
 anchors_preset = 7
@@ -306,6 +331,7 @@ text = "hiscore: 500000"
 horizontal_alignment = 1
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+process_mode = 1
 position = Vector2(100, 0)
 zoom = Vector2(2, 2)
 script = ExtResource("1_7jmaq")
@@ -324,14 +350,26 @@ color = Color(0.482353, 0.482353, 0.482353, 0)
 speed = 0.0
 
 [node name="Spawner" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("3_l7hnn")
 prefabs = Array[PackedScene]([ExtResource("4_26pqh"), ExtResource("5_lscy8")])
-offset = Vector2(404, 0)
+offset = Vector2(412, 0)
 time = 2.0
 time_decrease = 0.05
 min_time = 0.25
 smin = Vector2(-48, -48)
 smax = Vector2(48, 48)
+
+[node name="CloudSpawner" type="Node2D" parent="."]
+process_mode = 1
+position = Vector2(420, 0)
+script = ExtResource("10_aqkwm")
+prefab = ExtResource("11_8hwsk")
+variation = Vector2(-162, 162)
+time = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pr0gx")
 
 [connection signal="pressed" from="CanvasLayer/LoseMenu/Restart" to="CanvasLayer/LoseMenu" method="restart"]
 [connection signal="pressed" from="CanvasLayer/LoseMenu/Quit" to="CanvasLayer/LoseMenu" method="quit"]

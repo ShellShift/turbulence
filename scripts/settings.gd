@@ -11,7 +11,7 @@ func _ready():
 		"music": 0,
 		"sfx": 0,
 		"fullscreen": false,
-		"camera_shake": false
+		"camera_shake": true
 	}
 	$Music.value = data.music
 	$SoundEffects.value = data.sfx

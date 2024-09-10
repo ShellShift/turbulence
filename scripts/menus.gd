@@ -22,7 +22,15 @@ func enable(path):
 	prev_active.hide()
 
 func icon_hover():
-	$Main/Icon.rotation += 6.16
+	var icon = $Main/Icon
+	var tween = create_tween()
+	tween.tween_property(icon, "rotation", 0, time)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)
 
 func icon_unhover():
-	$Main/Icon.rotation -= 6.16
+	var icon = $Main/Icon
+	var tween = create_tween()
+	tween.tween_property(icon, "rotation", deg_to_rad(-25), time)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)

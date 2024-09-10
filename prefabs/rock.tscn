@@ -4,21 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://qkarigyi58bd" path="res://graphics/sprites/rock.png" id="2_64ufd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4enp"]
-size = Vector2(14, 8)
+size = Vector2(21, 12)
 
 [node name="Rock" type="Area2D"]
 script = ExtResource("1_653mf")
 particle = "rock"
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_64ufd")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_s4enp")
 
 [node name="OnScreen" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-8, -500, 16, 1000)
+rect = Rect2(-10.498, -500, 20.996, 1000)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="OnScreen" to="." method="_on_screen_exited"]

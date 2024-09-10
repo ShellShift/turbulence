@@ -1,16 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2emoc32h2l4m"]
 
-[ext_resource type="Texture2D" uid="uid://m7iq6btc7v8t" path="res://graphics/sprites/clouds.png" id="1_ip7jr"]
-[ext_resource type="Script" path="res://scripts/cloud.gd" id="2_rgx6s"]
+[ext_resource type="Texture2D" uid="uid://m7iq6btc7v8t" path="res://graphics/sprites/clouds.png" id="1_wp8dx"]
+[ext_resource type="Script" path="res://scripts/cloud.gd" id="2_nerag"]
 
 [node name="Cloud" type="Sprite2D"]
-modulate = Color(1, 1, 1, 0.784314)
-scale = Vector2(5, 5)
-texture = ExtResource("1_ip7jr")
+z_index = -1
+scale = Vector2(2, 2)
+texture = ExtResource("1_wp8dx")
 hframes = 3
-script = ExtResource("2_rgx6s")
+script = ExtResource("2_nerag")
 
 [node name="OnScreen" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-16, -500, 32, 1000)
 
 [connection signal="screen_exited" from="OnScreen" to="." method="_on_screen_exited"]
