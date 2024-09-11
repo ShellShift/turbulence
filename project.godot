@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Turbulence"
+config/version="0.1.0"
 config/tags=PackedStringArray("game_jam")
 run/main_scene="res://scenes/menus.tscn"
 config/features=PackedStringArray("4.3")
